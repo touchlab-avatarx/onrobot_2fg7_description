@@ -105,6 +105,24 @@ def generate_launch_description():
     )
     declared_arguments.append(
         DeclareLaunchArgument(
+            "port",
+            default_value='"502"',
+            description="Prefix of the joint names, useful for \
+        multi-robot setup. If changed than also joint names in the controllers' configuration \
+        have to be updated.",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
+            "address",
+            default_value='""',
+            description="Prefix of the joint names, useful for \
+        multi-robot setup. If changed than also joint names in the controllers' configuration \
+        have to be updated.",
+        )
+    )
+    declared_arguments.append(
+        DeclareLaunchArgument(
             "use_mock_hardware",
             default_value="false",
             description="Start robot with mock hardware mirroring command to its states.",
