@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="onrobot_2fg7">
     <xacro:arg name="prefix" default=""/>
-
     <xacro:arg name="port" default="502" />
-    <xacro:arg name="address" default="0" />
+    <xacro:arg name="address" default="" />
     <xacro:arg name="use_mock_hardware" default="false"/>
 
     <xacro:include filename="onrobot_2fg7.xacro"/>
@@ -26,8 +25,12 @@
         <origin xyz="0 0 0" rpy="0 0 0"/>
     </xacro:onrobot_2fg7_fingertip>
 
-
     <!-- ros2_control description -->
-    <xacro:onrobot_2fg7_ros2_control name="onrobot_2fg7" prefix="$(arg prefix)" port="$(arg port)" address="$(arg address)" use_mock_hardware="$(arg use_mock_hardware)" />
+    <xacro:onrobot_2fg7_ros2_control
+    name="onrobot_2fg7"
+    prefix="$(arg prefix)"
+    port="$(arg port)"
+    address="$(arg address)"
+    use_mock_hardware="$(arg use_mock_hardware)" />
 
 </robot>

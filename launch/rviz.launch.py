@@ -16,6 +16,8 @@ def launch_setup(context, *args, **kwargs):
     description_package = LaunchConfiguration("description_package")
     description_file = LaunchConfiguration("description_file")
     prefix = LaunchConfiguration("prefix")
+    port = LaunchConfiguration("port")
+    address = LaunchConfiguration("address")
     use_mock_hardware = LaunchConfiguration("use_mock_hardware")
 
     robot_description_content = Command(
@@ -26,6 +28,12 @@ def launch_setup(context, *args, **kwargs):
             " ",
             "prefix:=",
             prefix,
+            " ",
+            "port:=",
+            port,
+            " ",
+            "address:=",
+            address,
             " ",
             "use_mock_hardware:=",
             use_mock_hardware,
