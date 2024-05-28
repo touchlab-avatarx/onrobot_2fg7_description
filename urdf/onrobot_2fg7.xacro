@@ -2,10 +2,6 @@
 <robot name="2fg7_outwards" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <xacro:include filename="$(find onrobot_2fg7_description)/urdf/materials.xacro" />
-<xacro:include filename="$(find onrobot_2fg7_description)/urdf/onrobot_2fg7.trans.xacro" />
-<xacro:include filename="$(find onrobot_2fg7_description)/urdf/onrobot_2fg7.gazebo" />
-<xacro:gripper_transmission/>
-<xacro:gazebo_control is_control_on="false" />
 
 <xacro:macro name="onrobot_2fg7_gripper" params="prefix finger_configuration=outwards">
 
@@ -157,8 +153,6 @@
       </collision>
     </link>
 
-
-
     <joint name="left_finger_joint" type="prismatic">
       <origin xyz="0.032239 -0.029494 0.12005" rpy="0 0 0"/>
       <parent link="${prefix}base_link"/>
@@ -166,7 +160,7 @@
       <axis xyz="-1.0 0.0 0.0"/>
       <limit upper="0.0" lower="0.019" effort="100" velocity="0.45"/>
     </joint>
-    
+
     <joint name="right_finger_joint" type="prismatic">
       <origin xyz="-0.054361 -0.029494 0.12005" rpy="0 0 0"/>
       <parent link="${prefix}base_link"/>
