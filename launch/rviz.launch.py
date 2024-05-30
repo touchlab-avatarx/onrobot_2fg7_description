@@ -116,9 +116,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "address",
             default_value='""',
-            description="Prefix of the joint names, useful for \
-        multi-robot setup. If changed than also joint names in the controllers' configuration \
-        have to be updated.",
+            description="IP address of the robot.",
         )
     )
     declared_arguments.append(

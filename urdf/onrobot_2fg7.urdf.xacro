@@ -3,6 +3,9 @@
     <xacro:arg name="prefix" default=""/>
     <xacro:arg name="port" default="502" />
     <xacro:arg name="address" default="" />
+    <xacro:arg name="force" default="" />
+    <xacro:arg name="position_filtering" default="" />
+    <xacro:arg name="velocity_filtering" default="" />
     <xacro:arg name="use_mock_hardware" default="false"/>
 
     <xacro:include filename="onrobot_2fg7.xacro"/>
@@ -31,6 +34,9 @@
     prefix="$(arg prefix)"
     port="$(arg port)"
     address="$(arg address)"
+    force="$(arg force)"
+    position_filtering="$(arg position_filtering)"
+    velocity_filtering="$(arg velocity_filtering)"
     use_mock_hardware="$(arg use_mock_hardware)" />
 
 </robot>

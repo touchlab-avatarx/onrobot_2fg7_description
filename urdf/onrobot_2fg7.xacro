@@ -31,7 +31,7 @@
 
     <link name="${prefix}left_attachment"></link>
 
-    <joint name="left_finger_joint" type="prismatic">
+    <joint name="${prefix}gripper_joint" type="prismatic">
       <origin xyz="0.0 0.0 0.12005" rpy="0 0 0"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}left_attachment"/>
@@ -40,13 +40,13 @@
       <!-- total 0.38 -->
     </joint>
 
-    <joint name="right_finger_joint" type="prismatic">
+    <joint name="${prefix}right_finger_joint" type="prismatic">
       <origin xyz="0.0 0.0 0.12005" rpy="0 0 0"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}right_attachment"/>
       <axis xyz="1.0 0.0 0.0"/>
       <limit lower="-0.0115" upper="-0.0305" effort="140" velocity="0.45"/>
-      <mimic joint="left_finger_joint" multiplier="1.0"/>
+      <mimic joint="${prefix}gripper_joint" multiplier="1.0"/>
     </joint>
 
     <joint name="${prefix}2fg7_attach_joint" type="fixed">
