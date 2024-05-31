@@ -11,6 +11,7 @@
           <param name="force">100</param>
           <param name="position_filtering">1.0</param>
           <param name="velocity_filtering">1.0</param>
+          <param name="use_commanded">true</param>
         </xacro:unless>
         <xacro:if value="${use_mock_hardware}">
           <plugin>mock_components/GenericSystem</plugin>
