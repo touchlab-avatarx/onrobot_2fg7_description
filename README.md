@@ -1,30 +1,54 @@
-# Ros noetic description package for the onrobot 2fg7 gripper
-------
-## General info
-This repository contains the URDF for the [onrobot 2fg7 gripper](https://onrobot.com/en/products/2fg7). It also has a simple control implementation to be used with gazebo simulator
-this was developed using the [fusion 360 to urdf script](https://github.com/syuntoku14/fusion2urdf) and CAD files taken from the onrobot official webpage.
-## Installation and ussage:
-1. Install dependencies (from source):
-  * [grasp fix gazebo plugin](https://github.com/JenniferBuehler/gazebo-pkgs/wiki/Installation)
+# Description package for the onrobot 2FG7 gripper
 
-  * [mimic joint fix plugin](https://github.com/roboticsgroup/roboticsgroup_upatras_gazebo_plugins) 
-  
-2. Install this package:
+## Contents
+
+- rviz config
+- launch file
+- stl files for visualisation
+- ros2 control xacro
+- urdf's
+
+## Installation
+
+- git clone this package into the src folder of your ros2 workspace
+- run colcon build on your workspace
+
+## Implementation
+
+- There are two separate macro's in the xacro file
+  - 1 for the base - *onrobot_2fg7*
+  - 1 for the fingertips - *onrobot_2fg7_fingertip*
+
+The same macro is used for both fingertips in conjunction with a prefix to differentiate them.
+Each fingertip macro is attached to the left and right_attachment links respectively.
+
+If you use a different macro in the urdf.xacro remember to rotate the right fingertip by "pi"
+around the z-axis to achieve the correct orientation.
+
+Example:
 ```
-cd <your-catkin-ws>/src
-git clone https://github.com/juandpenan/onrobot_2FG7_gripper_description
-cd ..
-catkin build onrobot_2fg7_description
+<!-- Attach right fingertip -->
+    <xacro:onrobot_2fg7_fingertip prefix="right_" parent="$(arg prefix)right_attachment">
+        <origin xyz="0 0 0" rpy="0 0 3.14159265359"/>
+    </xacro:onrobot_2fg7_fingertip>
+
+    <!-- Attach left fingertip -->
+    <xacro:onrobot_2fg7_fingertip prefix="left_" parent="$(arg prefix)left_attachment">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:onrobot_2fg7_fingertip>
 ```
 
-3. Launch:
+The attachment location is is no longer outwards or inwards, instead it is centred on the 
+mounting bolts
+
+## Launch
 
   * Display the gripper with RVIZ:
   ```
-  roslaunch onrobot_2fg7_description display.launch
+  ros2 launch onrobot_2fg7_description rviz.launch
   ```
-  
-  * Launch gazebo: 
-  ```
-  roslaunch onrobot_2fg7_description gazebo_control.launch
-  ```
+
+## Associated packages
+
+- onrobot_api - git@github.com:touchlab-avatarx/onrobot_api.git
+- onrobot_robot_driver - git@github.com:touchlab-avatarx/onrobot_robot_driver.git
