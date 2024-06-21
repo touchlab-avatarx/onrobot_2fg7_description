@@ -8,8 +8,7 @@
     <xacro:arg name="velocity_filtering" default="" />
     <xacro:arg name="use_mock_hardware" default="false"/>
 
-    <xacro:include filename="onrobot_2fg7.xacro"/>
-
+    <xacro:include filename="$(find onrobot_2fg7_description)/urdf/onrobot_2fg7.xacro"/>
     <xacro:include filename="$(find onrobot_2fg7_description)/ros2_control/onrobot_2fg7.ros2_control.xacro"/>
 
     <link name="world"></link>
