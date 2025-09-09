@@ -1,54 +1,10 @@
-# Description package for the onrobot 2FG7 gripper
+The OnRobot 2FG7 Description package contains XACRO and URDF models for the two-finger gripper from OnRobot. You can use this package to visualise and integrate the hand with your robots. We support [ROS2](https://github.com/touchlab-avatarx/onrobot_2fg7_description).
 
-## Contents
+For examples of how to integrate each device look at `urdf/*.urdf.xacro` files. These attach
+the device to a fixed world link for visualisation. Each device is defined as a XACRO
+in the corresponding `*.xacro` file. When included a macro for attaching the device to
+the robot will be defined. Each macro has a prefix (for uniquely naming all added links and joints),
+parent (parent link to attach the device to), and origin (relative offset block).
 
-- rviz config
-- launch file
-- stl files for visualisation
-- ros2 control xacro
-- urdf's
-
-## Installation
-
-- git clone this package into the src folder of your ros2 workspace
-- run colcon build on your workspace
-
-## Implementation
-
-- There are two separate macro's in the xacro file
-  - 1 for the base - *onrobot_2fg7*
-  - 1 for the fingertips - *onrobot_2fg7_fingertip*
-
-The same macro is used for both fingertips in conjunction with a prefix to differentiate them.
-Each fingertip macro is attached to the left and right_attachment links respectively.
-
-If you use a different macro in the urdf.xacro remember to rotate the right fingertip by "pi"
-around the z-axis to achieve the correct orientation.
-
-Example:
-```
-<!-- Attach right fingertip -->
-    <xacro:onrobot_2fg7_fingertip prefix="right_" parent="$(arg prefix)right_attachment">
-        <origin xyz="0 0 0" rpy="0 0 3.14159265359"/>
-    </xacro:onrobot_2fg7_fingertip>
-
-    <!-- Attach left fingertip -->
-    <xacro:onrobot_2fg7_fingertip prefix="left_" parent="$(arg prefix)left_attachment">
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:onrobot_2fg7_fingertip>
-```
-
-The attachment location is is no longer outwards or inwards, instead it is centred on the 
-mounting bolts
-
-## Launch
-
-  * Display the gripper with RVIZ:
-  ```
-  ros2 launch onrobot_2fg7_description rviz.launch
-  ```
-
-## Associated packages
-
-- onrobot_api - git@github.com:touchlab-avatarx/onrobot_api.git
-- onrobot_robot_driver - git@github.com:touchlab-avatarx/onrobot_robot_driver.git
+To see the device in RViz, see example launch
+files in `launch/`.
